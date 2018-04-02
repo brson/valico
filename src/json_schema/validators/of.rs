@@ -6,6 +6,7 @@ use super::super::scope;
 
 #[allow(missing_copy_implementations)]
 pub struct AllOf {
+    pub fragment: Vec<String>,
     pub schemes: Vec<url::Url>,
 }
 

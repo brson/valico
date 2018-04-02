@@ -19,6 +19,7 @@ pub enum AdditionalKind {
 
 #[allow(missing_copy_implementations)]
 pub struct Items {
+    pub fragment: Vec<String>,
     pub items: Option<ItemsKind>,
     pub additional: Option<AdditionalKind>
 }

@@ -4,7 +4,10 @@ use super::super::errors;
 use super::super::scope;
 
 #[allow(missing_copy_implementations)]
-pub struct UniqueItems;
+pub struct UniqueItems {
+    pub fragment: Vec<String>,
+}
+
 impl super::Validator for UniqueItems {
     fn validate(&self, val: &Value, path: &str, _scope: &scope::Scope) -> super::ValidationState {
         let array = nonstrict_process!(val.as_array(), path);

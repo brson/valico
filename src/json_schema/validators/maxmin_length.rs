@@ -5,6 +5,7 @@ use super::super::scope;
 
 #[allow(missing_copy_implementations)]
 pub struct MaxLength {
+    pub fragment: Vec<String>,
     pub length: u64
 }
 
@@ -26,6 +27,7 @@ impl super::Validator for MaxLength {
 
 #[allow(missing_copy_implementations)]
 pub struct MinLength {
+    pub fragment: Vec<String>,
     pub length: u64
 }
 

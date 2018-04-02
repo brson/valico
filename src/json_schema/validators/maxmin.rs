@@ -5,6 +5,7 @@ use super::super::scope;
 
 #[allow(missing_copy_implementations)]
 pub struct Maximum {
+    pub fragment: Vec<String>,
     pub number: f64,
     pub exclusive: bool
 }
@@ -33,6 +34,7 @@ impl super::Validator for Maximum {
 
 #[allow(missing_copy_implementations)]
 pub struct Minimum {
+    pub fragment: Vec<String>,
     pub number: f64,
     pub exclusive: bool
 }

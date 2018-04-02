@@ -6,6 +6,7 @@ use std::f64;
 
 #[allow(missing_copy_implementations)]
 pub struct MultipleOf {
+    pub fragment: Vec<String>,
     pub number: f64
 }
 

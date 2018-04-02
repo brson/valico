@@ -13,6 +13,7 @@ pub enum TypeKind {
 
 #[allow(missing_copy_implementations)]
 pub struct Type {
+    pub fragment: Vec<String>,
     pub item: TypeKind
 }
 

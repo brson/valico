@@ -6,6 +6,7 @@ use super::super::scope;
 
 #[allow(missing_copy_implementations)]
 pub struct Not {
+    pub fragment: Vec<String>,
     pub url: url::Url
 }
 

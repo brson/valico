@@ -5,6 +5,7 @@ use super::super::scope;
 
 #[allow(missing_copy_implementations)]
 pub struct MaxItems {
+    pub fragment: Vec<String>,
     pub length: u64
 }
 
@@ -26,6 +27,7 @@ impl super::Validator for MaxItems {
 
 #[allow(missing_copy_implementations)]
 pub struct MinItems {
+    pub fragment: Vec<String>,
     pub length: u64
 }
 

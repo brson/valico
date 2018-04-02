@@ -11,6 +11,7 @@ pub trait ValicoError : Error + Send + Debug + Typeable {
     fn get_code(&self) -> &str;
     fn get_path(&self) -> &str;
     fn get_title(&self) -> &str;
+    fn get_fragment(&self) -> &[String];
     fn get_detail(&self) -> Option<&str> { None }
 }
 
@@ -34,6 +35,7 @@ impl Serialize for ValicoError {
         map.insert("code".to_string(), to_value(self.get_code()).unwrap());
         map.insert("title".to_string(), to_value(self.get_title()).unwrap());
         map.insert("path".to_string(), to_value(self.get_path()).unwrap());
+        map.insert("fragment".to_string(), to_value(self.get_fragment().join("/")).unwrap();
         match self.get_detail() {
             Some(ref detail) => { map.insert("detail".to_string(), to_value(detail).unwrap()); },
             None => ()
@@ -68,6 +70,7 @@ macro_rules! impl_err {
             fn get_code(&self) -> &str { $code }
             fn get_title(&self) -> &str { $title }
             fn get_path(&self) -> &str { self.path.as_ref() }
+            fn get_fragment(&self) -> &[String] { &self.fragment }
         }
     };
 
@@ -78,6 +81,7 @@ macro_rules! impl_err {
             fn get_code(&self) -> &str { $code }
             fn get_title(&self) -> &str { $title }
             fn get_path(&self) -> &str { self.path.as_ref() }
+            fn get_fragment(&self) -> &[String] { &self.fragment }
             fn get_detail(&self) -> Option<&str> { Some(self.detail.as_ref()) }
         }
     };
@@ -89,6 +93,7 @@ macro_rules! impl_err {
             fn get_code(&self) -> &str { $code }
             fn get_title(&self) -> &str { $title }
             fn get_path(&self) -> &str { self.path.as_ref() }
+            fn get_fragment(&self) -> &[String] { &self.fragment }
             fn get_detail(&self) -> Option<&str> { self.detail.as_ref().map(|s| s.as_ref()) }
         }
     }
@@ -117,6 +122,7 @@ macro_rules! impl_serialize{
                 map.insert("code".to_string(), to_value(self.get_code()).unwrap());
                 map.insert("title".to_string(), to_value(self.get_title()).unwrap());
                 map.insert("path".to_string(), to_value(self.get_path()).unwrap());
+                map.insert("fragment".to_string(), to_value(self.get_fragment().join("/")).unwrap();
                 match self.get_detail() {
                     Some(ref detail) => { map.insert("detail".to_string(), to_value(detail).unwrap()); },
                     None => ()

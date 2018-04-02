@@ -7,7 +7,9 @@ use super::super::errors;
 use super::super::scope;
 
 #[allow(missing_copy_implementations)]
-pub struct Ipv4;
+pub struct Ipv4 {
+    pub fragment: Vec<String>,
+}
 
 impl super::Validator for Ipv4 {
     fn validate(&self, val: &Value, path: &str, _scope: &scope::Scope) -> super::ValidationState {
@@ -28,7 +30,9 @@ impl super::Validator for Ipv4 {
 }
 
 #[allow(missing_copy_implementations)]
-pub struct Ipv6;
+pub struct Ipv6 {
+    pub fragment: Vec<String>,
+}
 
 impl super::Validator for Ipv6 {
     fn validate(&self, val: &Value, path: &str, _scope: &scope::Scope) -> super::ValidationState {
@@ -49,7 +53,9 @@ impl super::Validator for Ipv6 {
 }
 
 #[allow(missing_copy_implementations)]
-pub struct Uuid;
+pub struct Uuid {
+    pub fragment: Vec<String>,
+}
 
 impl super::Validator for Uuid {
     fn validate(&self, val: &Value, path: &str, _scope: &scope::Scope) -> super::ValidationState {
@@ -70,7 +76,9 @@ impl super::Validator for Uuid {
 }
 
 #[allow(missing_copy_implementations)]
-pub struct Uri;
+pub struct Uri {
+    pub fragment: Vec<String>,
+}
 
 impl super::Validator for Uri {
     fn validate(&self, val: &Value, path: &str, _scope: &scope::Scope) -> super::ValidationState {

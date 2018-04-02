@@ -5,6 +5,7 @@ use super::super::scope;
 
 #[allow(missing_copy_implementations)]
 pub struct Enum {
+    pub fragment: Vec<String>,
     pub items: Vec<Value>
 }
 

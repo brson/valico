@@ -13,6 +13,7 @@ pub enum DepKind {
 
 #[allow(missing_copy_implementations)]
 pub struct Dependencies {
+    pub fragment: Vec<String>,
     pub items: collections::HashMap<String, DepKind>
 }
 
