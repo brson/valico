@@ -16,28 +16,39 @@ lazy_static! {
 fn default_formats() -> FormatBuilders  {
     let mut map: FormatBuilders = collections::HashMap::new();
 
-    let date_time_builder = Box::new(|_def: &Value, _ctx: &schema::WalkContext| {
-        Ok(Some(Box::new(validators::Pattern{ regex: DATE_TIME_REGEX.clone() }) as validators::BoxedValidator))
+    let date_time_builder = Box::new(|_def: &Value, ctx: &schema::WalkContext| {
+        Ok(Some(Box::new(validators::Pattern{
+            fragment: ctx.fragment.clone(),
+            regex: DATE_TIME_REGEX.clone()
+        }) as validators::BoxedValidator))
     });
     map.insert("date-time".to_string(), date_time_builder);
 
-    let ipv4_builder = Box::new(|_def: &Value, _ctx: &schema::WalkContext| {
-        Ok(Some(Box::new(validators::formats::Ipv4) as validators::BoxedValidator))
+    let ipv4_builder = Box::new(|_def: &Value, ctx: &schema::WalkContext| {
+        Ok(Some(Box::new(validators::formats::Ipv4 {
+            fragment: ctx.fragment.clone(),
+        }) as validators::BoxedValidator))
     });
     map.insert("ipv4".to_string(), ipv4_builder);
 
-    let ipv6_builder = Box::new(|_def: &Value, _ctx: &schema::WalkContext| {
-        Ok(Some(Box::new(validators::formats::Ipv6) as validators::BoxedValidator))
+    let ipv6_builder = Box::new(|_def: &Value, ctx: &schema::WalkContext| {
+        Ok(Some(Box::new(validators::formats::Ipv6 {
+            fragment: ctx.fragment.clone(),
+        }) as validators::BoxedValidator))
     });
     map.insert("ipv6".to_string(), ipv6_builder);
 
-    let uri_builder = Box::new(|_def: &Value, _ctx: &schema::WalkContext| {
-        Ok(Some(Box::new(validators::formats::Uri) as validators::BoxedValidator))
+    let uri_builder = Box::new(|_def: &Value, ctx: &schema::WalkContext| {
+        Ok(Some(Box::new(validators::formats::Uri {
+            fragment: ctx.fragment.clone(),
+        }) as validators::BoxedValidator))
     });
     map.insert("uri".to_string(), uri_builder);
 
-    let uuid_builder = Box::new(|_def: &Value, _ctx: &schema::WalkContext| {
-        Ok(Some(Box::new(validators::formats::Uuid) as validators::BoxedValidator))
+    let uuid_builder = Box::new(|_def: &Value, ctx: &schema::WalkContext| {
+        Ok(Some(Box::new(validators::formats::Uuid {
+            fragment: ctx.fragment.clone(),
+        }) as validators::BoxedValidator))
     });
     map.insert("uuid".to_string(), uuid_builder);
 

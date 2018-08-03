@@ -18,6 +18,7 @@ impl super::Validator for MaxProperties {
         } else {
             val_error!(
                 errors::MaxProperties {
+                    fragment: self.fragment.clone(),
                     path: path.to_string()
                 }
             )
@@ -40,6 +41,7 @@ impl super::Validator for MinProperties {
         } else {
             val_error!(
                 errors::MinProperties {
+                    fragment: self.fragment.clone(),
                     path: path.to_string()
                 }
             )

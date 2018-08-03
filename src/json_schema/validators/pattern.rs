@@ -19,6 +19,7 @@ impl super::Validator for Pattern {
         } else {
             val_error!(
                 errors::Pattern {
+                    fragment: self.fragment.clone(),
                     path: path.to_string()
                 }
             )

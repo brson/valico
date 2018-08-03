@@ -160,6 +160,7 @@ impl Builder {
                     state.errors.push(
                         Box::new(errors::WrongType {
                             path: item_path.to_string(),
+                            fragment: vec![],
                             detail: "List value is not and object".to_string()
                         })
                     )
@@ -174,6 +175,7 @@ impl Builder {
             state.errors.push(
                 Box::new(errors::WrongType {
                     path: path.to_string(),
+                    fragment: vec![],
                     detail: "Value is not an object or an array".to_string()
                 })
             );
@@ -219,7 +221,8 @@ impl Builder {
                     state.append(process_result.state);
                 } else {
                     state.errors.push(Box::new(errors::Required {
-                        path: param_path.clone()
+                        path: param_path.clone(),
+                        fragment: vec![],
                     }))
                 }
             }

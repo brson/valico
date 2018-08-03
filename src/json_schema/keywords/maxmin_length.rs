@@ -15,6 +15,7 @@ macro_rules! kw_minmax_integer{
                     let length_val = length.as_f64().unwrap();
                     if length_val >= 0f64 && length_val.fract() == 0f64 {
                         Ok(Some(Box::new(validators::$name {
+                            fragment: ctx.fragment.clone(),
                             length: length_val as u64
                         })))
                     } else {

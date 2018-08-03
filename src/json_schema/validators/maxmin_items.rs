@@ -18,6 +18,7 @@ impl super::Validator for MaxItems {
         } else {
             val_error!(
                 errors::MaxItems {
+                    fragment: self.fragment.clone(),
                     path: path.to_string()
                 }
             )
@@ -40,6 +41,7 @@ impl super::Validator for MinItems {
         } else {
             val_error!(
                 errors::MinItems {
+                    fragment: self.fragment.clone(),
                     path: path.to_string()
                 }
             )

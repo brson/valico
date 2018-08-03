@@ -27,6 +27,15 @@ impl ValicoError {
             None
         }
     }
+
+    /// If this error is `E`, downcast this error to `E`, by reference.
+    pub fn downcast_mut<E: ValicoError>(&mut self) -> Option<&mut E> {
+        if self.is::<E>() {
+            unsafe { Some(mem::transmute(traitobject::data(self))) }
+        } else {
+            None
+        }
+    }
 }
 
 impl Serialize for ValicoError {
@@ -35,7 +44,7 @@ impl Serialize for ValicoError {
         map.insert("code".to_string(), to_value(self.get_code()).unwrap());
         map.insert("title".to_string(), to_value(self.get_title()).unwrap());
         map.insert("path".to_string(), to_value(self.get_path()).unwrap());
-        map.insert("fragment".to_string(), to_value(self.get_fragment().join("/")).unwrap();
+        map.insert("fragment".to_string(), to_value(self.get_fragment().join("/")).unwrap());
         match self.get_detail() {
             Some(ref detail) => { map.insert("detail".to_string(), to_value(detail).unwrap()); },
             None => ()
@@ -122,7 +131,7 @@ macro_rules! impl_serialize{
                 map.insert("code".to_string(), to_value(self.get_code()).unwrap());
                 map.insert("title".to_string(), to_value(self.get_title()).unwrap());
                 map.insert("path".to_string(), to_value(self.get_path()).unwrap());
-                map.insert("fragment".to_string(), to_value(self.get_fragment().join("/")).unwrap();
+                map.insert("fragment".to_string(), to_value(self.get_fragment().join("/")).unwrap());
                 match self.get_detail() {
                     Some(ref detail) => { map.insert("detail".to_string(), to_value(detail).unwrap()); },
                     None => ()

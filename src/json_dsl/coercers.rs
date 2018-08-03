@@ -38,6 +38,7 @@ impl Coercer for StringCoercer {
             Err(vec![
                 Box::new(errors::WrongType {
                     path: path.to_string(),
+                    fragment: vec![],
                     detail: "Can't coerce value to string".to_string()
                 })
             ])
@@ -67,6 +68,7 @@ impl Coercer for I64Coercer {
                 None => Err(vec![
                     Box::new(errors::WrongType {
                         path: path.to_string(),
+                        fragment: vec![],
                         detail: "Can't coerce string value to i64".to_string()
                     })
                 ])
@@ -75,6 +77,7 @@ impl Coercer for I64Coercer {
             Err(vec![
                 Box::new(errors::WrongType {
                     path: path.to_string(),
+                    fragment: vec![],
                     detail: "Can't coerce object value to i64".to_string()
                 })
             ])
@@ -104,6 +107,7 @@ impl Coercer for U64Coercer {
                 None => Err(vec![
                     Box::new(errors::WrongType {
                         path: path.to_string(),
+                        fragment: vec![],
                         detail: "Can't coerce string value to u64".to_string()
                     })
                 ])
@@ -112,6 +116,7 @@ impl Coercer for U64Coercer {
             Err(vec![
                 Box::new(errors::WrongType {
                     path: path.to_string(),
+                    fragment: vec![],
                     detail: "Can't coerce object value to u64".to_string()
                 })
             ])
@@ -141,6 +146,7 @@ impl Coercer for F64Coercer {
                 None => Err(vec![
                     Box::new(errors::WrongType {
                         path: path.to_string(),
+                        fragment: vec![],
                         detail: "Can't coerce string value to f64".to_string()
                     })
                 ])
@@ -149,6 +155,7 @@ impl Coercer for F64Coercer {
             Err(vec![
                 Box::new(errors::WrongType {
                     path: path.to_string(),
+                    fragment: vec![],
                     detail: "Can't coerce object value to f64".to_string()
                 })
             ])
@@ -174,6 +181,7 @@ impl Coercer for BooleanCoercer {
                 Err(vec![
                     Box::new(errors::WrongType {
                         path: path.to_string(),
+                        fragment: vec![],
                         detail: "Can't coerce this string value to boolean. Correct values are 'true' and 'false'".to_string()
                     })
                 ])
@@ -182,6 +190,7 @@ impl Coercer for BooleanCoercer {
             Err(vec![
                 Box::new(errors::WrongType {
                     path: path.to_string(),
+                    fragment: vec![],
                     detail: "Can't coerce object to boolean".to_string()
                 })
             ])
@@ -205,6 +214,7 @@ impl Coercer for NullCoercer {
                 Err(vec![
                     Box::new(errors::WrongType {
                         path: path.to_string(),
+                        fragment: vec![],
                         detail: "Can't coerce this string value to null. Correct value is only empty string".to_string()
                     })
                 ])
@@ -213,6 +223,7 @@ impl Coercer for NullCoercer {
             Err(vec![
                 Box::new(errors::WrongType {
                     path: path.to_string(),
+                    fragment: vec![],
                     detail: "Can't coerce object to null".to_string()
                 })
             ])
@@ -305,6 +316,7 @@ impl Coercer for ArrayCoercer {
             Err(vec![
                 Box::new(errors::WrongType {
                     path: path.to_string(),
+                    fragment: vec![],
                     detail: "Can't coerce object to array".to_string()
                 })
             ])
@@ -324,6 +336,7 @@ impl Coercer for ObjectCoercer {
             Err(vec![
                 Box::new(errors::WrongType {
                     path: path.to_string(),
+                    fragment: vec![],
                     detail: "Can't coerce non-object value to the object type".to_string()
                 })
             ])

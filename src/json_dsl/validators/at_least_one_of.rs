@@ -31,6 +31,7 @@ impl super::Validator for AtLeastOneOf {
             Err(vec![
                 Box::new(errors::AtLeastOne {
                     path: path.to_string(),
+                    fragment: vec![],
                     detail: Some("At least one must be present".to_string()),
                     params: self.params.clone()
                 })

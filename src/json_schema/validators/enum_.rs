@@ -24,6 +24,7 @@ impl super::Validator for Enum {
         if !contains {
             state.errors.push(Box::new(
                 errors::Enum {
+                    fragment: self.fragment.clone(),
                     path: path.to_string()
                 }
             ))

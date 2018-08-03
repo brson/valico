@@ -26,6 +26,7 @@ impl super::Validator for AllowedValues {
             Err(vec![
                 Box::new(errors::WrongValue {
                     path: path.to_string(),
+                    fragment: vec![],
                     detail: Some("Value is not among allowed list".to_string())
                 })
             ])

@@ -25,6 +25,7 @@ impl super::Validator for RejectedValues {
             Err(vec![
                 Box::new(errors::WrongValue {
                     path: path.to_string(),
+                    fragment: vec![],
                     detail: Some("Value is among reject list".to_string())
                 })
             ])

@@ -30,6 +30,7 @@ impl super::Validator for AllOf {
 
 #[allow(missing_copy_implementations)]
 pub struct AnyOf {
+    pub fragment: Vec<String>,
     pub schemes: Vec<url::Url>,
 }
 
@@ -61,6 +62,7 @@ impl super::Validator for AnyOf {
         if !valid {
             state.errors.push(Box::new(
                 errors::AnyOf {
+                    fragment: self.fragment.clone(),
                     path: path.to_string(),
                     states: states
                 }
@@ -74,6 +76,7 @@ impl super::Validator for AnyOf {
 
 #[allow(missing_copy_implementations)]
 pub struct OneOf {
+    pub fragment: Vec<String>,
     pub schemes: Vec<url::Url>,
 }
 
@@ -104,6 +107,7 @@ impl super::Validator for OneOf {
         if valid != 1 {
             state.errors.push(Box::new(
                 errors::OneOf {
+                    fragment: self.fragment.clone(),
                     path: path.to_string(),
                     states: states
                 }

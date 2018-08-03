@@ -88,6 +88,7 @@ impl super::Keyword for Items {
         };
 
         Ok(Some(Box::new(validators::Items {
+            fragment: ctx.fragment.clone(),
             items: items,
             additional: additional_items
         })))

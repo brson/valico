@@ -6,7 +6,8 @@ use serde::{Serialize, Serializer};
 #[derive(Debug)]
 #[allow(missing_copy_implementations)]
 pub struct Required {
-    pub path: String
+    pub path: String,
+    pub fragment: Vec<String>,
 }
 impl_err!(Required, "required", "This field is required");
 impl_serialize!(Required);
@@ -16,7 +17,8 @@ impl_serialize!(Required);
 #[allow(missing_copy_implementations)]
 pub struct WrongType {
     pub path: String,
-    pub detail: String
+    pub fragment: Vec<String>,
+    pub detail: String,
 }
 impl_err!(WrongType, "wrong_type", "Type of the value is wrong", +detail);
 impl_serialize!(WrongType);
@@ -25,6 +27,7 @@ impl_serialize!(WrongType);
 #[allow(missing_copy_implementations)]
 pub struct WrongValue {
     pub path: String,
+    pub fragment: Vec<String>,
     pub detail: Option<String>,
 }
 impl_err!(WrongValue, "wrong_value", "The value is wrong or mailformed", +opt_detail);
@@ -34,6 +37,7 @@ impl_serialize!(WrongValue);
 #[allow(missing_copy_implementations)]
 pub struct MutuallyExclusive {
     pub path: String,
+    pub fragment: Vec<String>,
     pub detail: Option<String>,
     pub params: Vec<String>
 }
@@ -46,6 +50,7 @@ impl_serialize!(MutuallyExclusive, |err: &MutuallyExclusive, map: &mut ::serde_j
 #[allow(missing_copy_implementations)]
 pub struct ExactlyOne {
     pub path: String,
+    pub fragment: Vec<String>,
     pub detail: Option<String>,
     pub params: Vec<String>
 }
@@ -59,6 +64,7 @@ impl_serialize!(ExactlyOne, |err: &ExactlyOne, map: &mut ::serde_json::Map<Strin
 #[allow(missing_copy_implementations)]
 pub struct AtLeastOne {
     pub path: String,
+    pub fragment: Vec<String>,
     pub detail: Option<String>,
     pub params: Vec<String>
 }

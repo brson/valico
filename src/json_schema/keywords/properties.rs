@@ -122,6 +122,7 @@ impl super::Keyword for Properties {
         } else { vec![] };
 
         Ok(Some(Box::new(validators::Properties {
+            fragment: ctx.fragment.clone(),
             properties: properties,
             additional: additional_properties,
             patterns: patterns

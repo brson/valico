@@ -20,6 +20,7 @@ impl super::Validator for Ipv4 {
             Err(_) => {
                 val_error!(
                     errors::Format {
+                        fragment: self.fragment.clone(),
                         path: path.to_string(),
                         detail: "Wrong IP address".to_string()
                     }
@@ -43,6 +44,7 @@ impl super::Validator for Ipv6 {
             Err(_) => {
                 val_error!(
                     errors::Format {
+                        fragment: self.fragment.clone(),
                         path: path.to_string(),
                         detail: "Wrong IP address".to_string()
                     }
@@ -66,6 +68,7 @@ impl super::Validator for Uuid {
             Err(err) => {
                 val_error!(
                     errors::Format {
+                        fragment: self.fragment.clone(),
                         path: path.to_string(),
                         detail: format!("Malformed UUID: {:?}", err)
                     }
@@ -89,6 +92,7 @@ impl super::Validator for Uri {
             Err(err) => {
                 val_error!(
                     errors::Format {
+                        fragment: self.fragment.clone(),
                         path: path.to_string(),
                         detail: format!("Malformed URI: {}", err)
                     }

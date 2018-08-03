@@ -15,6 +15,7 @@ impl super::Keyword for Ref {
             match url {
                 Ok(url) => {
                     Ok(Some(Box::new(validators::Ref {
+                        fragment: ctx.fragment.clone(),
                         url: url
                     })))
                 },

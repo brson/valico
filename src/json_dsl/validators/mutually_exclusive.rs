@@ -30,6 +30,7 @@ impl super::Validator for MutuallyExclusive {
             Err(vec![
                 Box::new(errors::MutuallyExclusive{
                     path: path.to_string(),
+                    fragment: vec![],
                     params: matched,
                     detail: Some("Fields are mutually exclusive".to_string())
                 })

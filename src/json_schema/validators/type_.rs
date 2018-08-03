@@ -38,6 +38,7 @@ impl super::Validator for Type {
                 if !check_type(val, t) {
                     state.errors.push(Box::new(
                         errors::WrongType {
+                            fragment: self.fragment.clone(),
                             path: path.to_string(),
                             detail: format!("The value must be {}", t)
                         }
@@ -56,6 +57,7 @@ impl super::Validator for Type {
                 if !is_type_match {
                     state.errors.push(Box::new(
                         errors::WrongType {
+                            fragment: self.fragment.clone(),
                             path: path.to_string(),
                             detail: format!("The value must be any of: {}", set.iter().map(|ty| ty.to_string()).collect::<Vec<String>>().join(", "))
                         }

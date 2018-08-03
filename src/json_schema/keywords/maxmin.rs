@@ -26,6 +26,7 @@ macro_rules! kw_minmax{
                     if value.is_number() {
                         let value = value.as_f64().unwrap();
                         Ok(Some(Box::new(validators::$name {
+                            fragment: ctx.fragment.clone(),
                             number: value,
                             exclusive: exclusive.is_some() &&
                                        try!(exclusive.unwrap()

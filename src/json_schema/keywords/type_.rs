@@ -14,6 +14,7 @@ impl super::Keyword for Type {
 
             if ty.is_some() {
                 Ok(Some(Box::new(validators::Type {
+                    fragment: ctx.fragment.clone(),
                     item: validators::type_::TypeKind::Single(ty.unwrap())
                 })))
             } else {
@@ -57,6 +58,7 @@ impl super::Keyword for Type {
             }
 
             Ok(Some(Box::new(validators::Type {
+                fragment: ctx.fragment.clone(),
                 item: validators::type_::TypeKind::Set(converted_types)
             })))
         } else {

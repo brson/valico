@@ -18,6 +18,7 @@ impl super::Validator for Required {
             if !object.contains_key(key) {
                 state.errors.push(Box::new(
                     errors::Required {
+                        fragment: self.fragment.clone(),
                         path: [path, key.as_ref()].join("/")
                     }
                 ))
