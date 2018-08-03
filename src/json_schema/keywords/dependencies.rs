@@ -69,6 +69,7 @@ impl super::Keyword for Dependencies {
         }
 
         Ok(Some(Box::new(validators::Dependencies {
+            fragment: ctx.fragment.clone(),
             items: items
         })))
 

@@ -14,6 +14,7 @@ impl super::Keyword for Pattern {
             let pattern_val = pattern.as_str().unwrap();
             match regex::Regex::new(pattern_val) {
                 Ok(re) => Ok(Some(Box::new(validators::Pattern {
+                    fragment: ctx.fragment.clone(),
                     regex: re
                 }))),
                 Err(err) => Err(schema::SchemaError::Malformed {

@@ -42,6 +42,7 @@ macro_rules! of_keyword{
                     }
 
                     Ok(Some(Box::new(validators::$name {
+                        fragment: ctx.fragment.clone(),
                         schemes: schemes
                     })))
                 } else {

@@ -67,6 +67,7 @@ impl super::Validator for Items {
                         Some(AdditionalKind::Boolean(allow)) if allow == false => {
                             state.errors.push(Box::new(
                                 errors::Items {
+                                    fragment: self.fragment.clone(),
                                     path: path.to_string(),
                                     detail: "Additional items are not allowed".to_string()
                                 }

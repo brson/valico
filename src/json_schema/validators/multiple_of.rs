@@ -26,6 +26,7 @@ impl super::Validator for MultipleOf {
         } else {
             val_error!(
                 errors::MultipleOf {
+                    fragment: self.fragment.clone(),
                     path: path.to_string()
                 }
             )

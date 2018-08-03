@@ -32,6 +32,7 @@ impl super::Keyword for Required {
             }
 
             Ok(Some(Box::new(validators::Required {
+                fragment: ctx.fragment.clone(),
                 items: items
             })))
         } else {

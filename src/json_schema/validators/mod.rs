@@ -111,7 +111,16 @@ impl Serialize for ValidationState {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error> where S: Serializer {
         let mut map = ::serde_json::Map::new();
         map.insert("errors".to_string(), Value::Array(
-            self.errors.iter().map(|err| to_value(err).unwrap()).collect::<Vec<Value>>()
+            self.errors.iter().map(|err| {
+                use super::errors::{AnyOf, OneOf};
+                if let Some(err) = err.downcast::<AnyOf>() {
+                    to_value(err)
+                } else if let Some(err) = err.downcast::<OneOf>() {
+                    to_value(err)
+                } else {
+                    to_value(err)
+                }.unwrap()
+            }).collect::<Vec<Value>>()
         ));
         map.insert("missing".to_string(), Value::Array(
             self.missing.iter().map(|url| to_value(&url.to_string()).unwrap()).collect::<Vec<Value>>()

@@ -13,6 +13,7 @@ impl super::Keyword for MultipleOf {
             let multiple_of = multiple_of.as_f64().unwrap();
             if multiple_of > 0f64 {
                 Ok(Some(Box::new(validators::MultipleOf {
+                    fragment: ctx.fragment.clone(),
                     number: multiple_of
                 })))
             } else {

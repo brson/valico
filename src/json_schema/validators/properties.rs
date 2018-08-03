@@ -62,6 +62,7 @@ impl super::Validator for Properties {
                 AdditionalKind::Boolean(allowed) if allowed == false => {
                     state.errors.push(Box::new(
                         errors::Properties {
+                            fragment: self.fragment.clone(),
                             path: path.to_string(),
                             detail: "Additional properties are not allowed".to_string()
                         }

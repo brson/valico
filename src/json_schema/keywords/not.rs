@@ -12,6 +12,7 @@ impl super::Keyword for Not {
 
         if not.is_object() {
             Ok(Some(Box::new(validators::Not {
+                fragment: ctx.fragment.clone(),
                 url: helpers::alter_fragment_path(ctx.url.clone(), [
                         ctx.escaped_fragment().as_ref(),
                         "not"

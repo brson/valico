@@ -25,6 +25,7 @@ impl super::Validator for Maximum {
         } else {
             val_error!(
                 errors::Maximum {
+                    fragment: self.fragment.clone(),
                     path: path.to_string()
                 }
             )
@@ -54,6 +55,7 @@ impl super::Validator for Minimum {
         } else {
             val_error!(
                 errors::Minimum {
+                    fragment: self.fragment.clone(),
                     path: path.to_string()
                 }
             )

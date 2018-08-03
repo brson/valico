@@ -14,6 +14,7 @@ impl super::Validator for regex::Regex {
             Err(vec![
                 Box::new(errors::WrongValue {
                     path: path.to_string(),
+                    fragment: vec![],
                     detail: Some("Value is not matched by required pattern".to_string())
                 })
             ])

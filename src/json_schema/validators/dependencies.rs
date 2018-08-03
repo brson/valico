@@ -41,6 +41,7 @@ impl super::Validator for Dependencies {
                             if !object.get(&key).is_some() {
                                 state.errors.push(Box::new(
                                     errors::Required {
+                                        fragment: self.fragment.clone(),
                                         path: [path, key.as_ref()].join("/")
                                     }
                                 ))

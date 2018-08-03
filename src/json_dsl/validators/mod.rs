@@ -15,6 +15,7 @@ macro_rules! strict_process {
         if maybe_val.is_none() {
             return Err(vec![
                 Box::new($crate::json_dsl::errors::WrongType {
+                    fragment: vec![],
                     path: $path.to_string(),
                     detail: $err.to_string()
                 })

@@ -20,6 +20,7 @@ impl super::Keyword for Enum {
             }
 
             Ok(Some(Box::new(validators::Enum {
+                fragment: ctx.fragment.clone(),
                 items: enum_.clone()
             })))
         } else {

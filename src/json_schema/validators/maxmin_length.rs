@@ -18,6 +18,7 @@ impl super::Validator for MaxLength {
         } else {
             val_error!(
                 errors::MaxLength {
+                    fragment: self.fragment.clone(),
                     path: path.to_string()
                 }
             )
@@ -40,6 +41,7 @@ impl super::Validator for MinLength {
         } else {
             val_error!(
                 errors::MinLength {
+                    fragment: self.fragment.clone(),
                     path: path.to_string()
                 }
             )

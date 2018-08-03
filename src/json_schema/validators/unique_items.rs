@@ -36,6 +36,7 @@ impl super::Validator for UniqueItems {
         } else {
             val_error!(
                 errors::UniqueItems {
+                    fragment: self.fragment.clone(),
                     path: path.to_string()
                 }
             )

@@ -31,6 +31,7 @@ impl super::Validator for ExactlyOneOf {
             Err(vec![
                 Box::new(errors::ExactlyOne {
                     path: path.to_string(),
+                    fragment: vec![],
                     detail: Some("Exactly one is allowed at one time".to_string()),
                     params: matched
                 })
@@ -39,6 +40,7 @@ impl super::Validator for ExactlyOneOf {
             Err(vec![
                 Box::new(errors::ExactlyOne {
                     path: path.to_string(),
+                    fragment: vec![],
                     detail: Some("Exactly one must be present".to_string()),
                     params: self.params.clone()
                 })

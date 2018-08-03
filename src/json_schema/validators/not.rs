@@ -19,6 +19,7 @@ impl super::Validator for Not {
             if schema.unwrap().validate_in(val, path).is_valid() {
                 state.errors.push(Box::new(
                     errors::Not {
+                        fragment: self.fragment.clone(),
                         path: path.to_string()
                     }
                 ))

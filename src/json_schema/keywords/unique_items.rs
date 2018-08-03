@@ -11,7 +11,9 @@ impl super::Keyword for UniqueItems {
 
         if uniq.is_boolean() {
             if uniq.as_bool().unwrap() {
-                Ok(Some(Box::new(validators::UniqueItems)))
+                Ok(Some(Box::new(validators::UniqueItems {
+                    fragment: ctx.fragment.clone(),
+                })))
             } else {
                 Ok(None)
             }
